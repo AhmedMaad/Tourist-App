@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TouristApp">
         <activity
+            android:name=".RandomImageActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity

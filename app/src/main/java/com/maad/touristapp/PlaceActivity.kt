@@ -4,22 +4,28 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.maad.touristapp.databinding.ActivityPlaceBinding
 
 
 class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClickListener {
 
     //receive intent name as this will help us to show "attraction recycler view"
-    var place: PlaceModel? = null
+    private lateinit var binding: ActivityPlaceBinding
+    private var place: PlaceModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityPlaceBinding.inflate(layoutInflater)
+        binding = ActivityPlaceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         place = intent.getParcelableExtra("place")
+
+        title = place?.name
 
         val options = arrayListOf<OptionsModel>()
         options.add(OptionsModel(R.drawable.ic_hotel, "Nearby Hotel"))
@@ -27,12 +33,12 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
         options.add(OptionsModel(R.drawable.ic_car, "Take a ride"))
         options.add(OptionsModel(R.drawable.ic_photo, "Random Pictures"))
 
-        val adapter = PlaceOptionsAdapter(this, options, this)
+        val adapter = PlaceOptionsAdapter(this, options, this, place)
         binding.optionsRv.adapter = adapter
 
     }
 
-    override fun onOptionsItemClick(position: Int) {
+    override fun onOptionsItemClick(position: Int, view: View) {
         when (position) {
             0 -> {
                 //Nearby Hotels
@@ -62,7 +68,15 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
                 }
             }
             3 -> {
-                //random pictures
+                if (place?.name == "Grand Egyptian Museum")
+                    Snackbar
+                        .make(binding.root, "Coming Soon", BaseTransientBottomBar.LENGTH_LONG)
+                        .show()
+                else{
+
+                }
+                //make intent to RandomActivity and show random images from flicker API
+                //random pictures (Note: Except for Grand Egyptian Museum)
             }
         }
     }
