@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".PlaceActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--Near hotels-->
+    <!--Near Restaurants-->
+    <!--Go to place using uber-->
+    <!--Random Pictures-->
+    <!--Attractions list (name - Image)-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/options_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/place_options_list_item" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/attraction_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/attraction_list_item" />
+
+</LinearLayout>

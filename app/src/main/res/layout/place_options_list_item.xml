@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="220dp"
+    android:layout_height="60dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="24sp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
+
+        <ImageView
+            android:id="@+id/place_option_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="4dp"
+            tools:src="@drawable/ic_car" />
+
+        <TextView
+            android:id="@+id/place_option_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:text="@tools:sample/full_names" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
