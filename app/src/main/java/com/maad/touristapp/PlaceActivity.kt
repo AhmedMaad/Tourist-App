@@ -73,7 +73,9 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
                         .make(binding.root, "Coming Soon", BaseTransientBottomBar.LENGTH_LONG)
                         .show()
                 else{
-
+                    val i = Intent(this, RandomImageActivity::class.java)
+                    i.putExtra("place", place)
+                    startActivity(i)
                 }
                 //make intent to RandomActivity and show random images from flicker API
                 //random pictures (Note: Except for Grand Egyptian Museum)

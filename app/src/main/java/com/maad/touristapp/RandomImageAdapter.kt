@@ -1,13 +1,14 @@
 package com.maad.touristapp
 
 import android.app.Activity
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class RandomImageAdapter(val activity: Activity, val images: ArrayList<String>) :
+class RandomImageAdapter(val activity: Activity, val images: ArrayList<Images>?) :
     RecyclerView.Adapter<RandomImageAdapter.ImageVH>() {
 
     class ImageVH(view: View) : RecyclerView.ViewHolder(view) {
@@ -22,9 +23,9 @@ class RandomImageAdapter(val activity: Activity, val images: ArrayList<String>) 
     override fun onBindViewHolder(holder: ImageVH, position: Int) {
         Glide
             .with(activity)
-            .load(images[position])
-            .into(holder.image);
+            .load(images?.get(position)?.url_m)
+            .into(holder.image)
     }
 
-    override fun getItemCount() = images.size
+    override fun getItemCount() = images?.size ?: 0
 }
