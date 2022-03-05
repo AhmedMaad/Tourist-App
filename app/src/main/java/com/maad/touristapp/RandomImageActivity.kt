@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,7 +22,6 @@ class RandomImageActivity : AppCompatActivity() {
         val rv: RecyclerView = findViewById(R.id.random_recycler_view)
         val progress: ProgressBar = findViewById(R.id.progress)
 
-        //get data from flicker api
         val place = intent.getParcelableExtra<PlaceModel>("place")
         title = place?.name
 
@@ -32,7 +32,7 @@ class RandomImageActivity : AppCompatActivity() {
             .build()
 
         val callable = retrofit.create(FlickerCallable::class.java)
-        callable.getRandomPics(place?.lat, place?.lon).enqueue(object : Callback<RandomImageModel> {
+        callable.getRandomPics(place?.lat, place?.lon, (1..5).random()).enqueue(object : Callback<RandomImageModel> {
             override fun onResponse(
                 call: Call<RandomImageModel>,
                 response: Response<RandomImageModel>
@@ -46,7 +46,7 @@ class RandomImageActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<RandomImageModel>, t: Throwable) {
                 progress.visibility = View.GONE
-                Log.d("trace", "Error: ${t.localizedMessage}")
+                Toast.makeText(this@RandomImageActivity, "Try Again Later", Toast.LENGTH_SHORT).show();
             }
         })
 

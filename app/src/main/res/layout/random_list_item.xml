@@ -2,8 +2,8 @@
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/random_iv"
-    tools:src="@tools:sample/backgrounds/scenic"
-    android:scaleType="centerCrop"
     android:layout_width="96dp"
     android:layout_height="96dp"
-    android:layout_margin="4dp"/>
+    android:layout_margin="4dp"
+    android:scaleType="centerCrop"
+    tools:src="@tools:sample/backgrounds/scenic" />
