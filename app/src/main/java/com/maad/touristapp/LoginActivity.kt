@@ -3,6 +3,10 @@ package com.maad.touristapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -20,6 +24,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.root.visibility = View.VISIBLE
+            binding.root.startAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_in))
+        }, 500)
+
         auth = Firebase.auth
 
         binding.btnLogin.setOnClickListener {

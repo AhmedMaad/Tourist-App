@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:animateLayoutChanges="true"
+    android:visibility="gone"
+    tools:context=".LoginActivity"
+    tools:visibility="visible">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

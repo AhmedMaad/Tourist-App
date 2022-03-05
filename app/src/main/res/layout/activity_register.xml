@@ -5,7 +5,10 @@
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    android:animateLayoutChanges="true"
+    android:visibility="gone"
+    tools:context=".RegisterActivity"
+    tools:visibility="visible">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
