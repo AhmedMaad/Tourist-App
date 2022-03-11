@@ -3,4 +3,15 @@
     <string name="forgot_password"><u>Forgot Password?</u></string>
     <string name="not_registered"><u>Not Registered?</u></string>
     <string name="already_registered"><u>Already Registered?</u></string>
+
+    <string name="light_sound_details">Step through a portal to ancient times, with the memorable Pyramids Sound and Light Show. The Sound Light show pyramids will take you on a journey thousands of years back, bringing the Egyptian legacy back to life! Thousands of years have passed since the pharaohs walked on earth, leaving behind a mystery on how the great pyramids were built. And, we can\'t just skip the enigmatic sphinx, standing prominently as a guard to protect the Great Pyramids.
+
+With the Sound Light Show at the Giza pyramids, the pharaonic history is being re-told by the sphinx, unraveling the ancient secrets and mysterious tales. The Sound and Light show at the pyramids narrates the history of those great kings; Khufu, Khafre, and Menkaure. Choose between 10 different languages and get ready to hear this legacy! You can view the Sound and Light show schedule and check the pyramid timing and book Giza pyramids tickets online.</string>
+
+    <string name="khufu_details">The Great Pyramid of Giza is the oldest and largest of the pyramids in the Giza pyramid complex bordering present-day Giza in Greater Cairo, Egypt. It is the oldest of the Seven Wonders of the Ancient World, and the only one to remain largely intact.</string>
+
+    <string name="khafre_details">The Pyramid of Khafre or of Chephren is the second-tallest and second-largest of the 3 Ancient Egyptian Pyramids of Giza and the tomb of the Fourth-Dynasty pharaoh Khafre, who ruled c. 2558−2532 BC.</string>
+
+    <string name="sphinx_details">The Great Sphinx of Giza, commonly referred to as the Sphinx of Giza, Great Sphinx or just the Sphinx, is a limestone statue of a reclining sphinx, a mythical creature with the head of a human, and the body of a lion.</string>
+
 </resources>

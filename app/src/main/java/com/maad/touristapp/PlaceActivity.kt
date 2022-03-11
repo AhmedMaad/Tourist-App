@@ -12,20 +12,20 @@ import com.google.android.material.snackbar.Snackbar
 import com.maad.touristapp.databinding.ActivityPlaceBinding
 
 
-class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClickListener {
+class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClickListener,
+    AttractionsAdapter.OnDetailsItemClickListener {
 
-    //receive intent name as this will help us to show "attraction recycler view"
     private lateinit var binding: ActivityPlaceBinding
-    private var place: PlaceModel? = null
+    private lateinit var place: PlaceModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlaceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        place = intent.getParcelableExtra("place")
+        place = intent.getParcelableExtra("place")!!
 
-        title = place?.name
+        title = place.name
 
         val options = arrayListOf<OptionsModel>()
         options.add(OptionsModel(R.drawable.ic_hotel, "Nearby Hotel"))
@@ -33,23 +33,40 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
         options.add(OptionsModel(R.drawable.ic_car, "Take a ride"))
         options.add(OptionsModel(R.drawable.ic_photo, "Random Pictures"))
 
-        val adapter = PlaceOptionsAdapter(this, options, this, place)
-        binding.optionsRv.adapter = adapter
+        val placeOptionsAdapter = PlaceOptionsAdapter(this, options, this, place)
+        binding.optionsRv.adapter = placeOptionsAdapter
 
+        /*val placeName = place?.name
+        when(placeName){
+            "Pyramids of Giza" -> {}
+            "El-Moez Street" -> {}
+            "National Museum of Egyptian Civilization" -> {}
+            "Baron Empain Castle" -> {}
+        }*/
+        //TODO: retrieve ready made arrayList called "details" and pass it to the Adapter
+        val attractionsAdapter = AttractionsAdapter(this, place.details, this)
+        binding.attractionRv.adapter = attractionsAdapter
+
+    }
+
+    override fun onDetailsItemClick(position: Int) {
+        val i = Intent(this, DetailsActivity::class.java)
+        i.putExtra("details", place.details[position])
+        startActivity(i)
     }
 
     override fun onOptionsItemClick(position: Int, view: View) {
         when (position) {
             0 -> {
                 //Nearby Hotels
-                val gmmIntentUri = Uri.parse("geo:${place?.lat},${place?.lon}?q=hotels")
+                val gmmIntentUri = Uri.parse("geo:${place.lat},${place.lon}?q=hotels")
                 val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 mapIntent.setPackage("com.google.android.apps.maps")
                 startActivity(mapIntent)
             }
             1 -> {
                 //Nearby Restaurants
-                val gmmIntentUri = Uri.parse("geo:${place?.lat},${place?.lon}?q=restaurants")
+                val gmmIntentUri = Uri.parse("geo:${place.lat},${place.lon}?q=restaurants")
                 val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 mapIntent.setPackage("com.google.android.apps.maps")
                 startActivity(mapIntent)
@@ -57,7 +74,7 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
             2 -> {
                 //Uber Ride
                 try {
-                    val gmmIntentUri = Uri.parse(("geo:${place?.lat},${place?.lon}"))
+                    val gmmIntentUri = Uri.parse(("geo:${place.lat},${place.lon}"))
                     val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                     mapIntent.`package` = "com.ubercab"
                     startActivity(mapIntent)
@@ -68,11 +85,11 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
                 }
             }
             3 -> {
-                if (place?.name == "Grand Egyptian Museum")
+                if (place.name == "Grand Egyptian Museum")
                     Snackbar
                         .make(binding.root, "Coming Soon", BaseTransientBottomBar.LENGTH_LONG)
                         .show()
-                else{
+                else {
                     val i = Intent(this, RandomImageActivity::class.java)
                     i.putExtra("place", place)
                     startActivity(i)
@@ -82,6 +99,5 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
             }
         }
     }
-
 
 }

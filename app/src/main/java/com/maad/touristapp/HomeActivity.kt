@@ -16,9 +16,55 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         title = "Home"
 
+        val pyramidsDetails = arrayListOf<PlaceDetails>()
+        pyramidsDetails.add(
+            PlaceDetails(
+                R.drawable.khufu,
+                "Khufu Pyramid",
+                "8 am to 4 pm",
+                25.49,
+                R.string.khufu_details
+            )
+        )
+        pyramidsDetails.add(
+            PlaceDetails(
+                R.drawable.khafre,
+                "Khafre Pyramid",
+                "8 am to 4 pm",
+                6.37,
+                R.string.khafre_details
+            )
+        )
+        pyramidsDetails.add(
+            PlaceDetails(
+                R.drawable.sound_light,
+                "Sound & Light Show",
+                "7 pm | 8 pm",
+                20.0,
+                R.string.light_sound_details
+            )
+        )
+        pyramidsDetails.add(
+            PlaceDetails(
+                R.drawable.sphinx,
+                "Sphinx",
+                "8 am to 4 pm",
+                0.0,
+                R.string.sphinx_details
+            )
+        )
+
         val places = arrayListOf<PlaceModel>()
-        places.add(PlaceModel(R.drawable.pyramids, "Pyramids of Giza", 29.9773, 31.1325))
-        places.add(PlaceModel(R.drawable.moez, "El-Moez Street", 30.0511, 31.2615))
+        places.add(
+            PlaceModel(
+                R.drawable.pyramids,
+                "Pyramids of Giza",
+                29.9773,
+                31.1325,
+                pyramidsDetails
+            )
+        )
+        /*places.add(PlaceModel(R.drawable.moez, "El-Moez Street", 30.0511, 31.2615))
         places.add(
             PlaceModel(
                 R.drawable.pharao,
@@ -29,7 +75,7 @@ class HomeActivity : AppCompatActivity() {
         )
         places.add(PlaceModel(R.drawable.baron, "Baron Empain Castle", 30.0869, 31.3301))
         places.add(PlaceModel(R.drawable.gem, "Grand Egyptian Museum", 29.9940, 31.1196))
-
+*/
         val adapter = PlaceAdapter(this, places)
         val recyclerView: RecyclerView = findViewById(R.id.rv)
         recyclerView.adapter = adapter
@@ -38,7 +84,6 @@ class HomeActivity : AppCompatActivity() {
             override fun onItemClick(position: Int) {
                 val i = Intent(this@HomeActivity, PlaceActivity::class.java)
                 i.putExtra("place", places[position])
-                //put extra for parcelable
                 startActivity(i)
             }
         }

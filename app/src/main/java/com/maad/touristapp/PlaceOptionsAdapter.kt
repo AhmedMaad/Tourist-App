@@ -10,10 +10,10 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class PlaceOptionsAdapter(
-    val activity: Activity,
-    val options: ArrayList<OptionsModel>,
-    val onOptionsItemClickListener: OnOptionsItemClickListener,
-    val place: PlaceModel?
+    private val activity: Activity,
+    private val options: ArrayList<OptionsModel>,
+    private val onOptionsItemClickListener: OnOptionsItemClickListener,
+    private val place: PlaceModel?
 ) :
     RecyclerView.Adapter<PlaceOptionsAdapter.OptionsVH>() {
 
@@ -34,19 +34,21 @@ class PlaceOptionsAdapter(
         }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): PlaceOptionsAdapter.OptionsVH {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionsVH {
         val view = activity.layoutInflater.inflate(R.layout.place_options_list_item, parent, false)
         return OptionsVH(view, onOptionsItemClickListener)
     }
 
-    override fun onBindViewHolder(holder: PlaceOptionsAdapter.OptionsVH, position: Int) {
+    override fun onBindViewHolder(holder: OptionsVH, position: Int) {
         holder.image.setImageResource(options[position].picture)
         holder.text.text = options[position].name
         if (place?.name == "Grand Egyptian Museum" && position == 3)
-            holder.parent.setBackgroundColor(ContextCompat.getColor(activity, android.R.color.darker_gray))
+            holder.parent.setBackgroundColor(
+                ContextCompat.getColor(
+                    activity,
+                    android.R.color.darker_gray
+                )
+            )
     }
 
     override fun getItemCount() = options.size

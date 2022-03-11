@@ -7,12 +7,6 @@
     android:orientation="vertical"
     tools:context=".PlaceActivity">
 
-    <!--Near hotels-->
-    <!--Near Restaurants-->
-    <!--Go to place using uber-->
-    <!--Random Pictures-->
-    <!--Attractions list (name - Image)-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/options_rv"
         android:layout_width="match_parent"
