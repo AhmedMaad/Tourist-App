@@ -21,6 +21,4 @@ class PlaceDetails(
     val workingHours: String,
     val ticketPrice: Double,
     @StringRes val about: Int
-    //working hours
-
 ) : Parcelable

@@ -21,7 +21,9 @@ class DetailsActivity: AppCompatActivity() {
         binding.attractionIv.setImageResource(details.picture)
         binding.collapsingToolbarLayout.title = details.name
         binding.aboutTv.text = resources.getString(details.about)
+        binding.workingHoursTv.text = details.workingHours
         binding.priceDataTv.text = details.ticketPrice.toString()
+
 
     }
 
