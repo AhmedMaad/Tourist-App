@@ -20,8 +20,7 @@ class PlaceDetails(
     val name: String,
     val workingHours: String,
     val ticketPrice: Double,
-    @StringRes val details: Int
-    //picture - name --> working hours - picture as cover photo (dont add to variables)
-// - name (don't add to variables) (make design with coordinate layout)
-    //details - tickets
+    @StringRes val about: Int
+    //working hours
+
 ) : Parcelable
