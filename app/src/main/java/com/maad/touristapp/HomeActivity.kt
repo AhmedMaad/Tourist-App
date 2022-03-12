@@ -16,12 +16,14 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         title = "Home"
 
+        val places = arrayListOf<PlaceModel>()
+
         val pyramidsDetails = arrayListOf<PlaceDetails>()
         pyramidsDetails.add(
             PlaceDetails(
                 R.drawable.khufu,
                 "Khufu Pyramid",
-                "8 am to 4 pm",
+                "08:00 am - 04:00 pm",
                 25.49,
                 R.string.khufu_details
             )
@@ -30,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
             PlaceDetails(
                 R.drawable.khafre,
                 "Khafre Pyramid",
-                "8 am to 4 pm",
+                "08:00 am - 04:00 pm",
                 6.37,
                 R.string.khafre_details
             )
@@ -48,13 +50,12 @@ class HomeActivity : AppCompatActivity() {
             PlaceDetails(
                 R.drawable.sphinx,
                 "Sphinx",
-                "8 am to 4 pm",
+                "08:00 am - 04:00 pm",
                 0.0,
                 R.string.sphinx_details
             )
         )
 
-        val places = arrayListOf<PlaceModel>()
         places.add(
             PlaceModel(
                 R.drawable.pyramids,
@@ -64,7 +65,40 @@ class HomeActivity : AppCompatActivity() {
                 pyramidsDetails
             )
         )
-        /*places.add(PlaceModel(R.drawable.moez, "El-Moez Street", 30.0511, 31.2615))
+
+        val moezDetails = arrayListOf<PlaceDetails>()
+        moezDetails.add(
+            PlaceDetails(
+                R.drawable.khan_el_khalili,
+                "Khan el-Khalili",
+                "24/7",
+                0.0,
+                R.string.khan_el_khalili_details
+            )
+        )
+        moezDetails.add(
+            PlaceDetails(
+                R.drawable.hakim_mosque,
+                "Al Hakim Mosque",
+                "09:00 am - 05:00 pm",
+                0.0,
+                R.string.al_hakim_mosque_details
+            )
+        )
+        moezDetails.add(
+            PlaceDetails(
+                R.drawable.beit_el_seheimy,
+                "Beit El Seheimy",
+                "09:00 am - 05:00 pm",
+                2.23,
+                R.string.beit_el_seheimy_details
+            )
+        )
+
+        places.add(PlaceModel(R.drawable.moez, "El-Moez Street", 30.0511, 31.2615, moezDetails))
+
+        /*
+        //TODO: This Museum will contain a video
         places.add(
             PlaceModel(
                 R.drawable.pharao,
