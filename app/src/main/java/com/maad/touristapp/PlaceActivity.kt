@@ -36,16 +36,12 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
         val placeOptionsAdapter = PlaceOptionsAdapter(this, options, this, place)
         binding.optionsRv.adapter = placeOptionsAdapter
 
-        /*val placeName = place?.name
-        when(placeName){
-            "Pyramids of Giza" -> {}
-            "El-Moez Street" -> {}
-            "National Museum of Egyptian Civilization" -> {}
-            "Baron Empain Castle" -> {}
-        }*/
-        //TODO: retrieve ready made arrayList called "details" and pass it to the Adapter
-        val attractionsAdapter = AttractionsAdapter(this, place.details, this)
-        binding.attractionRv.adapter = attractionsAdapter
+        if (place.details.size == 0)
+            binding.comingSoonLayout.root.visibility = View.VISIBLE
+        else {
+            val attractionsAdapter = AttractionsAdapter(this, place.details, this)
+            binding.attractionRv.adapter = attractionsAdapter
+        }
 
     }
 
@@ -94,8 +90,6 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
                     i.putExtra("place", place)
                     startActivity(i)
                 }
-                //make intent to RandomActivity and show random images from flicker API
-                //random pictures (Note: Except for Grand Egyptian Museum)
             }
         }
     }

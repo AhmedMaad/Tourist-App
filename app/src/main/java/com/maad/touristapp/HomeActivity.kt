@@ -39,7 +39,7 @@ class HomeActivity : AppCompatActivity() {
             PlaceDetails(
                 R.drawable.sound_light,
                 "Sound & Light Show",
-                "7 pm | 8 pm",
+                "7 pm & 8 pm",
                 20.0,
                 R.string.light_sound_details
             )
@@ -74,8 +74,17 @@ class HomeActivity : AppCompatActivity() {
             )
         )
         places.add(PlaceModel(R.drawable.baron, "Baron Empain Castle", 30.0869, 31.3301))
-        places.add(PlaceModel(R.drawable.gem, "Grand Egyptian Museum", 29.9940, 31.1196))
 */
+        places.add(
+            PlaceModel(
+                R.drawable.gem,
+                "Grand Egyptian Museum",
+                29.9940,
+                31.1196,
+                arrayListOf()
+            )
+        )
+
         val adapter = PlaceAdapter(this, places)
         val recyclerView: RecyclerView = findViewById(R.id.rv)
         recyclerView.adapter = adapter

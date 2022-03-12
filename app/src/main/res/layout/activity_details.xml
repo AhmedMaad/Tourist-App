@@ -43,7 +43,10 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="32dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,10 +79,10 @@
                 android:id="@+id/working_hours_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="@id/hours_tv"
                 app:layout_constraintTop_toBottomOf="@id/hours_tv"
                 tools:text="@tools:sample/full_names" />
 
@@ -99,6 +102,7 @@
                 android:id="@+id/dollar_sign_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:gravity="end"
                 android:text="$"
                 android:textColor="@android:color/holo_green_light"
@@ -112,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="@id/dollar_sign_tv"
                 app:layout_constraintEnd_toEndOf="@id/price_tv"
                 app:layout_constraintStart_toEndOf="@id/dollar_sign_tv"
