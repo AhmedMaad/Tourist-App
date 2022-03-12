@@ -21,6 +21,11 @@
         layout="@layout/layout_coming_soon"
         android:visibility="gone" />
 
+    <include
+        android:id="@+id/museum_layout"
+        layout="@layout/civilization_museum_layout"
+        android:visibility="gone" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/attraction_rv"
         android:layout_width="match_parent"

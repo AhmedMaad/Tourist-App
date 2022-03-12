@@ -5,8 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.MediaController
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.maad.touristapp.databinding.ActivityPlaceBinding
@@ -36,9 +38,24 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
         val placeOptionsAdapter = PlaceOptionsAdapter(this, options, this, place)
         binding.optionsRv.adapter = placeOptionsAdapter
 
-        if (place.details.size == 0)
-            binding.comingSoonLayout.root.visibility = View.VISIBLE
-        else {
+        if (place.details.size == 0) {
+            if (place.name == "Grand Egyptian Museum")
+                binding.comingSoonLayout.root.visibility = View.VISIBLE
+            else {
+                //show the video for egyptian civilization
+                binding.museumLayout.root.visibility = View.VISIBLE
+                binding.museumLayout.videoview.setVideoURI("android.resource://$packageName/${R.raw.museum}".toUri())
+
+                val videoController = MediaController(this)
+                videoController.setMediaPlayer(binding.museumLayout.videoview)
+                binding.museumLayout.videoview.setMediaController(videoController)
+                binding.museumLayout.videoview.start()
+
+                /*MediaController controller = new MediaController(this);
+        controller.setMediaPlayer(video);
+        video.setMediaController(controller);*/
+            }
+        } else {
             val attractionsAdapter = AttractionsAdapter(this, place.details, this)
             binding.attractionRv.adapter = attractionsAdapter
         }

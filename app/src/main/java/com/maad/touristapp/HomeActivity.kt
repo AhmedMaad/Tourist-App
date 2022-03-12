@@ -97,16 +97,17 @@ class HomeActivity : AppCompatActivity() {
 
         places.add(PlaceModel(R.drawable.moez, "El-Moez Street", 30.0511, 31.2615, moezDetails))
 
-        /*
-        //TODO: This Museum will contain a video
         places.add(
             PlaceModel(
                 R.drawable.pharao,
                 "National Museum of Egyptian Civilization",
                 30.0083,
-                31.2482
+                31.2482,
+                arrayListOf()
             )
         )
+
+        /*
         places.add(PlaceModel(R.drawable.baron, "Baron Empain Castle", 30.0869, 31.3301))
 */
         places.add(
