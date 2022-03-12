@@ -14,8 +14,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".DetailsActivity"
-            android:theme="@style/NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".RandomImageActivity"
             android:exported="false" />
@@ -26,13 +26,13 @@
             android:name=".PlaceActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".RegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

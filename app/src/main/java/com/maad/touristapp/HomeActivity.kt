@@ -107,9 +107,55 @@ class HomeActivity : AppCompatActivity() {
             )
         )
 
-        /*
-        places.add(PlaceModel(R.drawable.baron, "Baron Empain Castle", 30.0869, 31.3301))
-*/
+        val baronDetails = arrayListOf<PlaceDetails>()
+        baronDetails.add(
+            PlaceDetails(
+                R.drawable.baron_garden,
+                "Palace Garden",
+                "09:00 am - 06:00 pm",
+                6.38,
+                R.string.baron_palace_details
+            )
+        )
+        baronDetails.add(
+            PlaceDetails(
+                R.drawable.baron_outside,
+                "Palace (Outside View)",
+                "09:00 am - 06:00 pm",
+                6.38,
+                R.string.baron_palace_details
+            )
+        )
+        baronDetails.add(
+            PlaceDetails(
+                R.drawable.baron_roof,
+                "Roof of the Palace",
+                "09:00 am - 06:00 pm",
+                6.38,
+                R.string.baron_palace_details
+            )
+        )
+        baronDetails.add(
+            PlaceDetails(
+                R.drawable.baron_stairs,
+                "Inner Stairs",
+                "09:00 am - 06:00 pm",
+                6.38,
+                R.string.baron_palace_details
+            )
+        )
+
+        places.add(
+            PlaceModel(
+                R.drawable.baron,
+                "Baron Empain Castle",
+                30.0869,
+                31.3301,
+                baronDetails
+            )
+        )
+
+
         places.add(
             PlaceModel(
                 R.drawable.gem,
