@@ -50,10 +50,6 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
                 videoController.setMediaPlayer(binding.museumLayout.videoview)
                 binding.museumLayout.videoview.setMediaController(videoController)
                 binding.museumLayout.videoview.start()
-
-                /*MediaController controller = new MediaController(this);
-        controller.setMediaPlayer(video);
-        video.setMediaController(controller);*/
             }
         } else {
             val attractionsAdapter = AttractionsAdapter(this, place.details, this)
