@@ -20,19 +20,19 @@
             android:name=".RandomImageActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".PlaceActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -12,7 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Application BG Color -->
-        <item name="android:windowBackground">@color/gray</item>
+        <item name="android:windowBackground">@drawable/bg</item>
         <!-- Application text font-->
         <item name="android:fontFamily">cursive</item>
     </style>
@@ -29,7 +29,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Application BG Color -->
-        <item name="android:windowBackground">@color/gray</item>
+        <item name="android:windowBackground">@drawable/bg</item>
         <!-- Application text font-->
         <item name="android:fontFamily">cursive</item>
     </style>
