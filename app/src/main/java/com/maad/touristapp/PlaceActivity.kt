@@ -43,13 +43,13 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
                 binding.comingSoonLayout.root.visibility = View.VISIBLE
             else {
                 //show the video for egyptian civilization
-                /*binding.museumLayout.root.visibility = View.VISIBLE
+                binding.museumLayout.root.visibility = View.VISIBLE
                 binding.museumLayout.videoview.setVideoURI("android.resource://$packageName/${R.raw.museum}".toUri())
 
                 val videoController = MediaController(this)
                 videoController.setMediaPlayer(binding.museumLayout.videoview)
                 binding.museumLayout.videoview.setMediaController(videoController)
-                binding.museumLayout.videoview.start()*/
+                binding.museumLayout.videoview.start()
             }
         } else {
             val attractionsAdapter = AttractionsAdapter(this, place.details, this)
