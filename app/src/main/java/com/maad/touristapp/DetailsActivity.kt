@@ -19,11 +19,11 @@ class DetailsActivity: AppCompatActivity() {
         details = intent.getParcelableExtra("details")!!
 
         binding.attractionIv.setImageResource(details.picture)
+        binding.bgIv.setImageResource(details.picture)
         binding.collapsingToolbarLayout.title = details.name
         binding.aboutTv.text = resources.getString(details.about)
         binding.workingHoursTv.text = details.workingHours
         binding.priceDataTv.text = details.ticketPrice.toString()
-
 
     }
 
