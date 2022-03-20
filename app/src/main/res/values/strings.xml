@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tourist App</string>
+    <string name="app_name">Pharaonic Trip</string>
     <string name="forgot_password"><u>Forgot Password?</u></string>
     <string name="not_registered"><u>Not Registered?</u></string>
     <string name="already_registered"><u>Already Registered?</u></string>
