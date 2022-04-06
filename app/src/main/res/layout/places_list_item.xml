@@ -62,7 +62,7 @@
             android:minLines="3"
             android:padding="8dp"
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/full_names" />

@@ -30,19 +30,19 @@ class SettingsActivity : AppCompatActivity() {
                 showDesign(View.GONE, R.drawable.ic_down, R.anim.slide_up)
         }
 
-        binding.btnUpdate.setOnClickListener {
-            val newPassword = binding.etUpdatedPassword.text.toString()
-            if (newPassword.length < 6)
-                Toast.makeText(this, "Passwords should be > 6 character", Toast.LENGTH_LONG).show()
-            else {
-                val user = Firebase.auth.currentUser
-                user!!.updatePassword(newPassword)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful)
-                            Toast.makeText(this, "Password Updated", Toast.LENGTH_SHORT).show();
-                    }
-            }
+    binding.btnUpdate.setOnClickListener {
+        val newPassword = binding.etUpdatedPassword.text.toString()
+        if (newPassword.length < 6)
+            Toast.makeText(this, "Passwords should be > 6 letters", Toast.LENGTH_LONG).show()
+        else {
+            val user = Firebase.auth.currentUser
+            user!!.updatePassword(newPassword)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful)
+                        Toast.makeText(this, "Password Updated", Toast.LENGTH_SHORT).show()
+                }
         }
+    }
 
     }
 

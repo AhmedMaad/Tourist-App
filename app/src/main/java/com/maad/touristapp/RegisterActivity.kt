@@ -36,26 +36,31 @@ class RegisterActivity : AppCompatActivity() {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
             val confirmPass = binding.etConfirmPassword.text.toString()
-            if (password != confirmPass)
-                Toast.makeText(this, "Password should be the same", Toast.LENGTH_SHORT).show()
-            else
+            if (email.isEmpty() || password.isEmpty() || confirmPass.isEmpty())
+                Toast.makeText(this, "Missing Required Fields", Toast.LENGTH_SHORT).show();
+            else if (password != confirmPass)
+                Toast.makeText(this, "Passwords should be the same", Toast.LENGTH_SHORT).show()
+            else {
+                binding.btnRegister.isEnabled = false
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful)
                             verifyEmail()
-                        else
+                        else {
+                            binding.btnRegister.isEnabled = true
                             Toast.makeText(
                                 this,
                                 "${task.exception?.localizedMessage}",
                                 Toast.LENGTH_SHORT
                             ).show()
+                        }
+
                     }
+            }
+
         }
 
-        binding.tvRegistered.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
+        binding.tvRegistered.setOnClickListener { openLogin() }
 
     }
 
@@ -63,15 +68,20 @@ class RegisterActivity : AppCompatActivity() {
         val user = Firebase.auth.currentUser
         user!!.sendEmailVerification()
             .addOnCompleteListener { task ->
-                if (task.isSuccessful)
-                    Snackbar
-                        .make(
-                            binding.parent,
-                            "Check your email",
-                            BaseTransientBottomBar.LENGTH_LONG
-                        )
-                        .show()
+                if (task.isSuccessful) {
+                    binding.btnRegister.isEnabled = true
+                    Snackbar.make(
+                        binding.parent, "Check your email", BaseTransientBottomBar.LENGTH_LONG
+                    ).show()
+                    Handler(Looper.getMainLooper()).postDelayed({ openLogin() }, 2500)
+                }
+
             }
+    }
+
+    private fun openLogin() {
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 
 }

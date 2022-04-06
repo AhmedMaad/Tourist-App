@@ -13,8 +13,6 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Application BG Color -->
         <item name="android:windowBackground">@drawable/bg</item>
-        <!-- Application text font-->
-        <item name="android:fontFamily">cursive</item>
     </style>
 
     <style name="NoActionBar" parent="Theme.AppCompat.DayNight.NoActionBar">
@@ -30,8 +28,11 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Application BG Color -->
         <item name="android:windowBackground">@drawable/bg</item>
-        <!-- Application text font-->
-        <item name="android:fontFamily">cursive</item>
+    </style>
+
+    <style name="VideoTheme" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/bg</item>
     </style>
 
 </resources>

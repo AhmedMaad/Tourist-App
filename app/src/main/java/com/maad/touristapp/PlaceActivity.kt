@@ -50,6 +50,14 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
                 videoController.setMediaPlayer(binding.museumLayout.videoview)
                 binding.museumLayout.videoview.setMediaController(videoController)
                 binding.museumLayout.videoview.start()
+
+                binding.museumLayout.fullscreenIv.setOnClickListener {
+                    binding.museumLayout.videoview.pause()
+                    val i = Intent(this, VideoActivity::class.java)
+                    i.putExtra("currentTime", binding.museumLayout.videoview.currentPosition)
+                    startActivityForResult(i, 500)
+                }
+
             }
         } else {
             val attractionsAdapter = AttractionsAdapter(this, place.details, this)
@@ -105,6 +113,14 @@ class PlaceActivity : AppCompatActivity(), PlaceOptionsAdapter.OnOptionsItemClic
                 }
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 500 && resultCode == RESULT_OK) {
+            binding.museumLayout.videoview.seekTo(data!!.getIntExtra("currentTime", 0))
+            binding.museumLayout.videoview.start()
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }

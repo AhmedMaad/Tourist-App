@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
 import com.maad.touristapp.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -24,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        Firebase.initialize(this)
 
         Handler(Looper.getMainLooper()).postDelayed({
             binding.root.visibility = View.VISIBLE
@@ -33,15 +35,16 @@ class LoginActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         binding.btnLogin.setOnClickListener {
+            binding.btnLogin.isEnabled = false
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         if (auth.currentUser!!.isEmailVerified) {
-                            startActivity(Intent(this, HomeActivity::class.java))
-                            finish()
-                        } else
+                            binding.btnLogin.isEnabled = true
+                            openHomeActivity()
+                        } else {
                             Snackbar
                                 .make(
                                     binding.root,
@@ -49,12 +52,20 @@ class LoginActivity : AppCompatActivity() {
                                     BaseTransientBottomBar.LENGTH_LONG
                                 )
                                 .show()
-                    } else
+                            Handler(Looper.getMainLooper()).postDelayed({
+                                openHomeActivity()
+                            }, 2500)
+                        }
+
+                    } else {
+                        binding.btnLogin.isEnabled = true
                         Toast.makeText(
                             this,
                             "${task.exception?.localizedMessage}",
                             Toast.LENGTH_SHORT
                         ).show()
+                    }
+
                 }
         }
 
@@ -89,5 +100,16 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    public override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if (currentUser != null && currentUser.isEmailVerified)
+            openHomeActivity()
+    }
+
+    private fun openHomeActivity() {
+        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
+    }
 
 }

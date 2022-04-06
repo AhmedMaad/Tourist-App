@@ -13,6 +13,11 @@
         android:theme="@style/Theme.TouristApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".VideoActivity"
+            android:exported="false"
+            android:theme="@style/VideoTheme"
+            android:screenOrientation="landscape"/>
+        <activity
             android:name=".DetailsActivity"
             android:exported="false"
             android:theme="@style/NoActionBar" />

@@ -32,21 +32,17 @@ class RandomImageActivity : AppCompatActivity() {
             .build()
 
         val callable = retrofit.create(FlickerCallable::class.java)
-        callable.getRandomPics(place?.lat, place?.lon, (1..5).random()).enqueue(object : Callback<RandomImageModel> {
-            override fun onResponse(
-                call: Call<RandomImageModel>,
-                response: Response<RandomImageModel>
-            ) {
+        callable.getRandomPics(place?.lat, place?.lon, (1..5).random())
+            .enqueue(object : Callback<RandomImageModel> {
+            override fun onResponse(call: Call<RandomImageModel>,response: Response<RandomImageModel>) {
                 progress.visibility = View.GONE
-                val adapter = RandomImageAdapter(
-                    this@RandomImageActivity, response.body()?.photos?.photo
-                )
+                val adapter = RandomImageAdapter(this@RandomImageActivity, response.body()?.photos?.photo)
                 rv.adapter = adapter
             }
 
             override fun onFailure(call: Call<RandomImageModel>, t: Throwable) {
                 progress.visibility = View.GONE
-                Toast.makeText(this@RandomImageActivity, "Try Again Later", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this@RandomImageActivity, "Try Again Later", Toast.LENGTH_SHORT).show()
             }
         })
 
